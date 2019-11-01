@@ -1,17 +1,12 @@
 <template>
-  <div class="hello">
-    <h1>u-tokyo design</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-    </p>
-    <router-link to="/check">診断へ</router-link>
+  <div>
+    選んでね
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'Select',
   props: {
   }
 }
