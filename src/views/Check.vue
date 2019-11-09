@@ -1,7 +1,7 @@
 <template>
   <div>
-    診断ページです
     <Select
+      question="行きたい旅行はどれ？"
       img1="logo.png"
       img2="logo.png"
       img3="logo.png"
@@ -13,6 +13,7 @@
       v-on:select-clicked="selectClicked"
     ></Select>
     <Select
+      question="ほしい車はどれ？"
       img1="logo.png"
       img2="logo.png"
       img3="logo.png"
@@ -24,6 +25,7 @@
       v-on:select-clicked="selectClicked"
     ></Select>
     <Select
+      question="食べたいのはどれ？"
       img1="logo.png"
       img2="logo.png"
       img3="logo.png"
@@ -35,6 +37,7 @@
       v-on:select-clicked="selectClicked"
     ></Select>
     <Select
+      question="通いたい習い事はどれ？"
       img1="logo.png"
       img2="logo.png"
       img3="logo.png"
@@ -46,6 +49,7 @@
       v-on:select-clicked="selectClicked"
     ></Select>
     <Select
+      question="飲みたいのはどれ？"
       img1="logo.png"
       img2="logo.png"
       img3="logo.png"
@@ -56,13 +60,23 @@
       :stepCount="this.steps"
       v-on:select-clicked="selectClicked"
     ></Select>
-    <section class="result" v-show="currentStep == steps + 1">
-      あなたの結果は {{ age }} 歳 <br />
+    <section class="select-view result" v-show="currentStep == steps + 1">
+      あなたの結果は {{ Math.round(age) }} 歳 <br />
       確信度 {{ confidence }} <br />
       女性的度 {{ feminine }} % <br />
       次は、お題に沿って回答してみましょう。
-      <router-link to="/try">Try</router-link>
+      <router-link to="/try">
+        <div class="next-button">
+          次へ
+        </div>
+      </router-link>
     </section>
+    <div id="nav" v-show="currentStep != steps + 1">
+      <router-link to="/">最初からやりなおす</router-link>
+    </div>
+    <div class="footer" v-show="currentStep == steps + 1">
+      ©東京大学 グラフィックデザイン概論 「伝える」を考える
+    </div>
   </div>
 </template>
 
@@ -107,3 +121,33 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.select-view {
+  box-sizing: border-box;
+  padding: 32px;
+  height: 100vh;
+}
+  .next-button {
+    background-color: #EE7B50;
+    display: inline-block;
+    border-radius: 4px;
+    color: #fff;
+    padding: 16px 32px;
+    margin: 72px;
+    font-size: 1.3em;
+  }
+  a {
+    display: block;
+  }
+  .footer {
+    position: absolute;
+    bottom: 0;
+    padding: 32px;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    left: 0;
+    right: 0;
+  }
+</style>

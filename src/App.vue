@@ -1,27 +1,32 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">最初から</router-link>
-    </div>
     <router-view/>
   </div>
 </template>
 
 <style lang="scss">
+body {
+  margin: 0;
+  box-sizing: border-box;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  min-height: 100vh;
 }
 
 #nav {
-  padding: 30px;
-
+  position: absolute;
+  top: 5vh;
+  right: 5vw;
   a {
     font-weight: bold;
-    color: #2c3e50;
+    color: rgba(0, 0, 0, 0.3);
+    text-decoration: none !important;
 
     &.router-link-exact-active {
       color: #42b983;
