@@ -86,10 +86,10 @@ export default {
   methods: {
     selectClicked: function(e) {
       // confidence
-      this.confidence += Math.abs(this.age - e[0]);
+      this.confidence += Math.abs(e[0] - this.age);
       
       // age （修正後の年齢）=（修正前の年齢）+【［（修正前の年齢）-（ターゲット年齢）］×（重み）】
-      this.age += (this.age - e[0]) * e[1];
+      this.age += (e[0] - this.age) * e[1];
 
       // feminineness
       if (this.currentStep == this.steps) {
